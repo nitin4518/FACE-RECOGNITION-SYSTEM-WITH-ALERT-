@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REAL-TIME CRIMINAL IDENTIFICATION SYSTEM 
+      BASED ON FACE RECOGNITION</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #7886C7;
+            color: white;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #3B5998; /* Light blue */
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .avatar-row {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        .highlight {
+            position: relative;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 3px;
+            width: 60px;
+            height: 60px;
+            border: 2px solid orange;
+            border-radius: 50%;
+        }
+
+        .highlight::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 25px;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .title {
+            background-color: #3674B5;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .buttons {
+            margin-top: 50px;
+        }
+
+        .button {
+            display: block;
+            width: 400px;
+            margin: 30px auto;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button-blue {
+            background-color: #3B6790;
+            color: white;
+        }
+
+        .button-blue:hover {
+            background-color: #0000CC; /* Darker blue */
+        }
+
+        .button-red {
+            background-color: #D84040;
+            color: white;
+        }
+
+        .button-red:hover {
+            background-color: #CC0000; /* Darker red */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">RTCIS - REAL-TIME CRIMINAL IDENTIFICATION SYSTEM 
+      BASED ON FACE RECOGNITION</div>
+
+    <div class="avatar-row">
+        <img src="boy.png" alt="Avatar" class="avatar">
+        <img src="bussiness-man.png" alt="Avatar" class="avatar">
+        <img src="girl.png" alt="Avatar" class="avatar">
+        <div class="highlight">
+            <img src="man (2).png" alt="Avatar" class="avatar">
+        </div>
+        <img src="man (1).png" alt="Avatar" class="avatar">
+        <img src="girl (1).png" alt="Avatar" class="avatar">
+        <img src="boy.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="title">REAL-TIME CRIMINAL IDENTIFICATION SYSTEM 
+      BASED ON FACE RECOGNITION</div>
+
+    <div class="buttons">
+        <button class="button button-blue  regst">Register Criminal <br> (Only for police officials)</button>
+        <button class="button button-blue">Photo Match</button>
+        <button class="button button-red runbtn">Video Surveillance</button>
+    </div>
+    <script>
+        let cbtn = document.querySelector('.regst')
+        cbtn.addEventListener('click', () =>{
+            window.location.href = 'register.html';
+        });
+
+         document.querySelector('.runbtn').addEventListener('click', () => {
+            fetch('http://localhost:5000/run-python')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('output').innerText = data.result;
+                })
+                .catch(err => {
+                    document.getElementById('output').innerText = 'Error: ' + err;
+                });
+        });
+
+    </script>
+</body>
+</html>

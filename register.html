@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F2F2F2;
+        }
+
+        .header {
+            background-color: #5078A1;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .sub-header {
+            background-color: #3B3B3B;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 60%;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group .button {
+            width: 100%;
+            background-color: #FF0000;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-group .button:hover {
+            background-color: #CC0000;
+        }
+
+        .image-container {
+            margin-left: 20px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            max-width: 320px;
+            max-height: 350px;
+            border-radius: 8px;
+            border: 2px solid #CCC;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">RTCIS - REAL-TIME CRIMINAL IDENTIFICATION SYSTEM BASED ON FACE RECOGNITION</div>
+    <div class="sub-header">Registration Form</div>
+
+    <div class="container">
+        <div class="form-container">
+            <form action="register.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="father-name">Father Name</label>
+                    <input type="text" id="father-name" name="father-name" placeholder="Enter father name">
+                </div>
+
+                <!-- <div class="form-group">
+                    <label for="mother-name">Mother Name</label>
+                    <input type="text" id="mother-name" name="mother-name" placeholder="Enter mother name">
+                </div> -->
+
+                <div class="form-group">
+                    <label>Gender *</label>
+                    <div class="radio-group">
+                        <input type="radio" id="male" name="gender" value="m" required>
+                        <label for="male">Male</label>
+
+                        <input type="radio" id="female" name="gender" value="f">
+                        <label for="female">Female</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ctype">Criminal Type</label>
+                    <select id="ctype" name="ctype">
+                        <option value="ACC">Active Case Criminal</option>
+                        <option value="PCC">Passive Case Criminal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="religion">Religion</label>
+                    <select id="religion" name="religion">
+                        <option value="muslim">Muslim</option>
+                        <option value="hindu">Hindu</option>
+                        <option value="christian">Christian</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="blood-group">Blood Group</label>
+                    <select id="blood-group" name="blood-group">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="body-mark">Body Mark</label>
+                    <input type="text" id="body-mark" name="body-mark" placeholder="Enter body mark details">
+                </div>
+
+                <div class="form-group">
+                    <label for="nationality">Nationality</label>
+                    <input type="text" id="nationality" name="nationality" placeholder="Enter nationality">
+                </div>
+
+                <div class="form-group">
+                    <label for="crime">Crime Convicted</label>
+                    <textarea id="crime" name="crime" rows="4" placeholder="Enter crime details"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="face-image">Face Image *</label>
+                    <input type="file" id="face-image" name="face-image" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="button" name="submit">Register</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="image-container">
+            <img id="preview-img" src="" alt="Criminal Image">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('face-image').addEventListener('change', function(event) {
+            const imageContainer = document.getElementById('preview-img');
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imageContainer.src = e.target.result;
+                    imageContainer.style.display = 'block'; // Show the image
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
